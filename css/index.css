@@ -2,4 +2,36 @@ img {
     width: 100%;
     height: 70vh;
 }
-/* this is how you make comments in css */
+/* tag selector */
+body {
+    background-color: rgba(240, 255, 252, 0.89);
+    margin: auto;
+}
+/* id selector */
+#logo {
+    color: crimson;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+/* class selector */
+.menu {
+    background-color: rgb(230, 249, 250);
+}
+nav {
+    background-color: black;
+}
+.menu {
+    list-style-type: none;
+    height: 50px;
+}
+.menu>li>.a {
+    text-decoration: none;
+}
+a :hover {
+    color: purple;
+    text-transform: uppercase;
+}
+/* look inside of div with a class of feed for every div inside, look for its child of element height 4px; then apply to style to it */
+div.feed>div>h4 {
+    color: aqua;
+}
