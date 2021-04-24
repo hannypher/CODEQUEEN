@@ -1,11 +1,13 @@
-img {
-    width: 100%;
-    height: 70vh;
-}
 /* tag selector */
 body {
-    background-color: rgba(240, 255, 252, 0.89);
-    margin: auto;
+    color: purple;
+    width: 90%;
+    margin:auto;
+    background-color: rgba(2, 243, 195, 0.89);
+}
+img {
+    width:100%;
+    height:60vh;
 }
 /* id selector */
 #logo {
@@ -14,24 +16,41 @@ body {
     text-transform: uppercase;
 }
 /* class selector */
-.menu {
-    background-color: rgb(230, 249, 250);
-}
-nav {
-    background-color: black;
+.navbar-top{
+    background-color: rgb(243, 65, 169);
+    margin-top: 0px;
 }
 .menu {
     list-style-type: none;
     height: 50px;
+    display: inline-block;
 }
 .menu>li>.a {
     text-decoration: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color:purple
 }
 a :hover {
     color: purple;
     text-transform: uppercase;
 }
+a:active{
+    color: rgb(88, 2, 88);
+}
 /* look inside of div with a class of feed for every div inside, look for its child of element height 4px; then apply to style to it */
 div.feed>div>h4 {
-    color: aqua;
+    color: rgb(255, 0, 157);
+}
+
+.review-text {
+    /* color: rgb(74, 83, 107); */
+    /* red, green blue opacity */
+    color: rgba(31, 23, 73, 0.548);
+    margin-top:7px;
+    margin-bottom:4px;
+    /* padding: 10px; */
+    padding:3px 5px 5px 6px;
+    /* display: none; */
+    height: 50px;
 }
