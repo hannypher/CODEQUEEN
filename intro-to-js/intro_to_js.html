@@ -4,11 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Covid Digital Test</title>
 </head>
 <body>
-    <h1>Welcome to our page</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quis laborum nobis?</p>
+    <h1>COVID TEST</h1>
+    <form id="temperature_form" action="." method="POST">
+        <input id="temp_field" type="number" name="temperature"/>
+        <input type="submit" value="Submit Your Temperature">
+    </form>
+    <p><b>COVID TEST:</b> <span id="message">pending</span></p>
+    <script>
+        //bitwise or operators
+        //and  operator &&
+
+        console.log(true && false)
+        console.log(true && true)
+        console.log(false && false)
+
+        //bitwise or
+        let name = 'Hanifa';
+        if(name.length || name === 'Hanifa') { //if the name exists or name is armstrong
+            console.log('i found Hanifa');
+        } else {
+            console.log('that babe is wierd');
+        }
+
+        //javascript will go here
+
+        //step 1: select the form
+        //let form = document.getElementById('temperature_form');
+        let form = document.querySelector('#temperature_form');
+        let temperature, message, covidResult;
+        covidResult = document.getElementById('message');
+
+    //handle form submission    
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            temperature = form.temperature.value;
+
+        //run the checks here
+        if (temperature && temperature == 33) { //if temperature has value and temperature is equal to 33
+            message = 'you have normal temperature';
+        } else if(temperature == 35) {
+            message ='you may have contacted covid';
+        } else if(temperature >= 37) {
+            message = 'please rush to the MOH';
+        } else {
+            message = "unknown result"
+        }
+        if(temperature && message) {
+            covidResult.textContent = message
+        }
+    }) 
+    
+    //restore covid result message when someone removes temperature value
+        let tempField = document.querySelector('#temp_field');
+        tempField.addEventListener('input', (e) => {
+            e.preventDefault();
+            let {value} = e.target;
+            if (!value) {
+                covidResult.textContent = 'pending'
+            }
+        })
+    </script>
     <!-- <script>
         var name = "Hanifa";
         //alert(name)
@@ -23,6 +81,6 @@
     }    
     </script> -->
     <!-- linking javascipt to a file-->
-    <script src="./index.js"></script>
+    <!--script src="./index.js"></script-->
 </body>
 </html>
