@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Task Tracker</title>
+    <style>
+        ul{    
+            list-style-type: none;
+            border: 1px solid cyan;
+            padding: 23px;
+            display: flex;
+            flex-flow: column;
+        }  
+        .li{
+            margin-bottom: 5px;
+        }
+        .delete{
+            float: right;
+            border: none;
+            border-radius: 12px;
+        }  
+    </style>
+</head>
+<body>
+    <input id="todo" type="text" placeholder="Enter task">
+    <div class="todos-container">
+        <ul class="todos">
+            <li>
+                <div class="todo-item">
+                    <input type="checkbox"> <span class="todo-text">Go to the mall</span>
+                    <button class="delete">X</button>
+                </div>     
+            </li>
+            <li>
+                <div class="todo-item">
+                    <input type="checkbox"> <span class="todo-text">Visit your friend</span>
+                    <button class="delete">X</button>
+                </div>     
+            </li>
+            <li>
+                <div class="todo-item">
+                    <input type="checkbox"> <span class="todo-text">Go to the salon</span>
+                    <button class="delete">X</button>
+                </div>     
+            </li>
+        </ul>
+    </div>
+    <!-- <button id="sample">Delete Button X</button> -->
+    <script>
+        //get list of items
+        const items = document.querySelector('.todos')
+        //select the items
+        let todoItems = document.querySelectorAll('.todo-item');
+
+        //loop over items and add events
+        todoItems.forEach(item => {
+            let [input, span, button] = item.children //destructure the array
+            //or u can use the method commented out below
+            //let input = item.children[0];
+            //let span = item.children[1];
+            //let button = item.children[2];
+
+            //handle checking and unchecking checkboxes
+            input.addEventListener('change', (e) => {
+                e.preventDefault();
+                //console.log(input.checked);
+               // if(input.checked) {
+               //     span.style.textDecoration='line-through';
+               // } else {
+                //    span.style.textDecoration='none';
+               // }
+                //if(input.checked) return !e.checked
+                //alert('clicked', e.target)
+                //console.log(e.target);
+
+                //or u can use the method below
+                //ternary operator does exactly what the above block does 
+                (input.checked) ? Object.assign(span.style,
+                {
+                    'text-decoration': 'line-through',
+                    'color': 'green'
+                }) : Object.assign(span.style,
+                {
+                    'text-decoration': 'none',
+                    'color': 'black'
+                });    
+            });
+
+            //style the button
+            button.style.backgroundColor ='red';
+            button.style.width ='120px';
+            button.style.color = 'white';
+
+            //handle the click event
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                let todoItem = button.parentElement; //li parent of div
+                let itemList = todoItem.parentElement; //ul
+                itemList.removeChild(todoItem);
+            })
+        })
+
+        const todo = document.querySelector('#todo').addEventListener('keyup', (e) => {
+            e.preventDefault();
+            if(e.key === 'Enter' || e.keyCode === 13) {
+                const li = document.createElement('li');
+                const input = document.createElement('input');
+                const span = document.createElement('span');
+                const btn = document.createElement('button');
+                const div = document.createElement('div');
+
+                //add the text
+                span.textContent = e.target.value
+                console.log(e.target.value);
+                input.type = 'checkbox';
+                btn.textContent = 'Dynamic X';
+                div.className = 'todo-item';
+                div.appendChild(input);
+                div.appendChild(span);
+                div.appendChild(btn);
+                li.appendChild(div);
+
+                //add to the dom
+                items.appendChild(li);
+
+                //listen to click
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('Dynamic button clicked');
+                })
+            }
+        });
+    //    const todoItems = document.querySelectorAll('li');
+    //    let btn = todoItems[0].nextElementSibling.children[0].children;
+    //    btn.addEventListener('click', (e) => {
+    //        e.preventDefault();
+    //        console.log(e.target);
+    //    })
+
+    //   document.querySelector('#sample').addEventListener('click', handleClicked)
+    </script>
+</body>
+</html>
