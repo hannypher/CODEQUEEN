@@ -126,6 +126,13 @@
                 items.appendChild(li);
 
                 //listen to click
+                btn.addEventListener('click', () => {
+                    e.preventDefault()
+                    alert('Dynamic Button Clicked')
+                })
+
+
+                //listen to click
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     alert('Dynamic button clicked');
